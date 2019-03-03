@@ -9,7 +9,7 @@ function countfiles {
 
 nfiles=$(countfiles)
 echo "How many files are in the current directory?"
-echo "Make a guess:"
+echo -n "Make a guess: "
 read guess
 while [[ $guess -ne $nfiles ]]
 do
@@ -20,7 +20,7 @@ do
 		msg="too high"
 	fi
 	echo "Your guess is $msg."
-	echo "Please try again:"
+	echo -n "Please try again: "
 	read guess
 done
 echo "Congratulations! $guess is the correct number."
