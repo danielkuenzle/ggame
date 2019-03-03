@@ -1,9 +1,15 @@
-#!/usr/bin/env bash
+# !/usr/bin/env bash
 # File: guessinggame.sh
 # Author: Daniel Kuenzle
 
-nfiles=$(ls -l | egrep ^-.* | wc -l)
-echo "Guess and enter the number of files in this directory:"
+function countfiles {
+	local n=$(ls -l | egrep ^-.* | wc -l)
+	echo $n
+}
+
+nfiles=$(countfiles)
+echo "How many files are in the current directory?"
+echo "Make a guess:"
 read guess
 while [[ $guess -ne $nfiles ]]
 do
@@ -13,7 +19,8 @@ do
 	else
 		msg="too high"
 	fi
-	echo "Your guess is $msg. Please try again or quit with ^C:"
+	echo "Your guess is $msg."
+	echo "Please try again:"
 	read guess
 done
-echo "Congratulations! $guess the correct number."
+echo "Congratulations! $guess is the correct number."
